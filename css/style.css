@@ -30,14 +30,26 @@ a    { color: inherit; text-decoration: none; }
 /* Define your custom properties here */
 
 :root {
-
+  --color-black: #0a0a0a;
+  --color-pink: #ff3ea5;
+  --color-lime: #aaff00;
+  --color-sky: #38d9f5;
+  --color-orange: #ff7c2a;
+  --color-purple: #7c3aed;
+  --color-text: #ffffff;
+  --color-bg: #0a0a0a;
+  --font-display: 'Bebas Neue', Impact, sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --sidebar-w: 380px;
+  --gap: 3rem;
+  --radius: 4px;
 }
 
 /* Apply font-family, color, and background-color using var() */
 body {
-  font-family: __________________;
-  color: __________________;
-  background-color: __________________;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
   line-height: 1.6;
 }
 
@@ -75,7 +87,7 @@ body {
 /* TASK 2 — Descendant Combinator */
 /* Target all links inside .site-nav */
 
-__________________ {
+.site-nav a {
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -84,7 +96,7 @@ __________________ {
   transition: color 0.15s ease;
 }
 
-__________________:hover {
+.site-nav a:hover {
   color: #fff;
 }
 
@@ -105,7 +117,7 @@ __________________:hover {
 /* TASK 3 — Attribute Selector */
 /* Target the nav link with aria-current="page" */
 
-__________________ {
+.site-nav a[aria-current="page"] {
   color: var(--color-lime);
   font-weight: 600;
 }
@@ -282,23 +294,23 @@ __________________ {
 /* Target artist cards containing .headliner-badge */
 /* Do not use .artist-card--headliner in your selector */
 
-__________________ {
+.artist-card:has(.headliner-badge) {
   background-color: var(--color-pink);
 }
 
-__________________ .artist-name {
+.artist-card:has(.headliner-badge) .artist-name {
   color: #fff;
 }
 
-__________________ .artist-day {
+.artist-card:has(.headliner-badge) .artist-day {
   color: rgba(255, 255, 255, 0.5);
 }
 
-__________________ .artist-genre {
+.artist-card:has(.headliner-badge) .artist-genre {
   color: rgba(255, 255, 255, 0.6);
 }
 
-__________________ .headliner-badge {
+.artist-card:has(.headliner-badge) .headliner-badge {
   background-color: #fff;
   color: var(--color-pink);
 }
@@ -354,7 +366,7 @@ __________________ .headliner-badge {
 /* TASK 7 — :nth-child */
 /* Give every even schedule item a slightly lighter background */
 
-__________________ {
+.schedule-item:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.03);
 }
 
@@ -398,8 +410,8 @@ __________________ {
 /* TASK 5 — ::before */
 /* Add a large decorative quotation mark before .festival-quote */
 
-__________________ {
-  content: ;
+.festival-quote::before {
+  content: "\201C";
   position: absolute;
   left: 0.5rem;
   top: -1.5rem;
@@ -454,29 +466,29 @@ __________________ {
 /* TASK 4 — Attribute Selectors */
 
 /* 4a: links whose href begins with https */
-__________________ {
+.info-links a[href^="https"] {
   color: var(--color-lime);
   font-weight: 500;
 }
 
-__________________:hover {
+.info-links a[href^="https"]:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 /* 4b: links whose href ends with .pdf */
-__________________ {
+.info-links a[href$=".pdf"] {
   color: rgba(255, 255, 255, 0.35);
   font-style: italic;
 }
 
 /* 4c: links whose href begins with mailto */
-__________________ {
+.info-links a[href^="mailto"] {
   color: var(--color-sky);
   font-weight: 500;
 }
 
-__________________::before {
+.info-links a[href^="mailto"]::before {
   content: "✉ ";
 }
 
@@ -484,7 +496,7 @@ __________________::before {
 /* TASK 6 — ::first-letter */
 /* Drop cap on the first paragraph inside .info-text */
 
-__________________ {
+.info-text p:first-of-type::first-letter{
   font-family: var(--font-display);
   font-size: 3.5em;
   line-height: 0.75;
@@ -510,7 +522,7 @@ __________________ {
 
 /* Use calc() to fill the remaining width */
 .newsletter-form {
-  width: __________________;
+  width: calc(100% - var(--sidebar-w) - var(--gap));
 }
 
 
@@ -587,7 +599,7 @@ __________________ {
 /* TASK 9 — :focus-visible */
 /* Keyboard focus ring on the submit button */
 
-__________________ {
+.submit-btn:focus-visible {
   outline: 3px solid var(--color-lime);
   outline-offset: 3px;
 }
